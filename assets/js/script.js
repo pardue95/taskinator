@@ -55,6 +55,8 @@ var createTaskEl = function(taskDataObj) {
     taskDataObj.id = taskIdCounter;
  console.log(taskDataObj);
  tasks.push(taskDataObj);
+ // save to localStorage
+ saveTasks();
 
 
     // create task actions (buttons and select) for task
@@ -127,6 +129,7 @@ var completeEditTask = function(taskName, taskType, taskId) {
             tasks[i].name = taskName;
             tasks[i].type = taskType;
         }
+        
     };
 
     saveTasks();
@@ -155,7 +158,7 @@ var taskButtonHandler = function(event) {
 };
 
 var taskStatusChangeHandler = function(event) {
-    console.log(event.target.value);
+   // console.log(event.target.value);
 
     // find task list item based on event.target's data-task-id attribute
     var taskId = event.target.getAttribute("data-task-id");
@@ -180,7 +183,7 @@ for (var i = 0; i < tasks.length; i++) {
     }
   };
 
-console.log(tasks);
+
         saveTasks();
 
     
@@ -259,6 +262,10 @@ console.log(tasks);
 //   console.log(tasks[i]);
 // // }
       };
+
+      var saveTasks = function() {
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+      }
     
         
 
