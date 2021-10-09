@@ -173,12 +173,14 @@ var taskStatusChangeHandler = function(event) {
         tasksCompletedEl.appendChild(taskSelected);
     };
 
-    // update task's in tasks array
-    // for (var i = 0; i < tasks.length; i++) {
-    //     if (tasks[i].id === parseInt(taskId)) {
-    //         tasks[i].status = statusValue;
-    //     };
+ // update task's in tasks array
+for (var i = 0; i < tasks.length; i++) {
+    if (tasks[i].id === parseInt(taskId)) {
+      tasks[i].status = statusValue;
+    }
+  };
 
+console.log(tasks);
         saveTasks();
 
     
@@ -214,14 +216,19 @@ var deleteTask = function(taskId) {
     taskSelected.remove();
 
     // create new array to hold updated list of tasks
-    var updatedTaskArr = [];
+// create new array to hold updated list of tasks
+var updatedTaskArr = [];
 
-    // loop through current tasks
-    // for (var i = 0; i < tasks.length; i++) {
-    //     // if tasks[i].id doesn't match the value of taskId, let's keep that task and push it into the new array
-    //     if (tasks[i].id !== parseInt(taskId)) {
-    //         updatedTaskArr.push(tasks[i]);
-    //     };
+// loop through current tasks
+for (var i = 0; i < tasks.length; i++) {
+  // if tasks[i].id doesn't match the value of taskId, let's keep that task and push it into the new array
+  if (tasks[i].id !== parseInt(taskId)) {
+    updatedTaskArr.push(tasks[i]);
+  }
+}
+
+// reassign tasks array to be the same as updatedTaskArr
+tasks = updatedTaskArr;
 
         saveTasks();
     };
